@@ -25,6 +25,7 @@ $(x86_64_asm_object_files): build/x86_64/%.o : src/impl/x86_64/%.asm
 .PHONY: remove
 .PHONY: run
 build: $(kernel_object_files) $(x86_64_object_files)
+	mkdir targets/x86_64/iso/boot/kernel
 	$(MAKE) -C **/path/to**/testMode/ build_tstmd
 	$(MAKE) -C **/path/to**/custom-os/safeMode/ build_sfmd
 	mkdir -p dist/x86_64 && \
