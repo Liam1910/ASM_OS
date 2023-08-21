@@ -25,8 +25,8 @@ $(x86_64_asm_object_files): build/x86_64/%.o : src/impl/x86_64/%.asm
 .PHONY: remove
 .PHONY: run
 build: $(kernel_object_files) $(x86_64_object_files)
-	$(MAKE) -C /home/liam/Music/OS-ALL/custom-os/testMode/ build_tstmd
-	$(MAKE) -C /home/liam/Music/OS-ALL/custom-os/safeMode/ build_sfmd
+	$(MAKE) -C **/path/to**/testMode/ build_tstmd
+	$(MAKE) -C **/path/to**/custom-os/safeMode/ build_sfmd
 	mkdir -p dist/x86_64 && \
 	ld -n -o dist/x86_64/main.bin -T targets/x86_64/linker.ld $(kernel_object_files) $(x86_64_object_files) && \
 	cp dist/x86_64/main.bin targets/x86_64/iso/boot/kernel/main.bin && \
@@ -34,8 +34,8 @@ build: $(kernel_object_files) $(x86_64_object_files)
 	grub-mkrescue /usr/lib/grub/i386-pc -o dist/x86_64/kernel.iso targets/x86_64/iso
 
 remove: $(kernel_object_files) $(x86_64_object_files)
-	$(MAKE) -C /home/liam/Music/OS-ALL/custom-os/safeMode/ remove_sfmd
-	$(MAKE) -C /home/liam/Music/OS-ALL/custom-os/testMode/ remove_tstmd
+	$(MAKE) -C **/path/to**/custom-os/safeMode/ remove_sfmd
+	$(MAKE) -C **/path/to**/custom-os/testMode/ remove_tstmd
 	rm -r build && \
 	rm -r dist && \
 	rm targets/x86_64/iso/boot/kernel/main.bin && \
