@@ -25,9 +25,9 @@ $(x86_64_asm_object_files): build/x86_64/%.o : src/impl/x86_64/%.asm
 build_sfmd: $(kernel_object_files) $(x86_64_object_files)
 	mkdir -p dist/x86_64 && \
 	ld -n -o dist/x86_64/safemode.bin -T targets/x86_64/linker.ld $(kernel_object_files) $(x86_64_object_files) && \
-	cp dist/x86_64/safemode.bin /home/liam/Music/OS-ALL/custom-os/main/targets/x86_64/iso/boot/kernel/safemode.bin
+	cp dist/x86_64/safemode.bin **/path/to**/custom-os/main/targets/x86_64/iso/boot/kernel/safemode.bin
 
 remove_sfmd: $(kernel_object_files) $(x86_64_object_files)
 	rm -r build && \
 	rm -r dist && \
-	rm /home/liam/Music/OS-ALL/custom-os/main/targets/x86_64/iso/boot/kernel/safemode.bin
+	rm **path/to**/custom-os/main/targets/x86_64/iso/boot/kernel/safemode.bin
