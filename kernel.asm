@@ -126,7 +126,7 @@ longmode:
 				jmp .no_command
 			.pcheck_hanoi:
 				cmp al, PROG_HANOI_ID
-				jg .pcheck_hw
+				jg .wrong_command
 				call program_hanoi
 				jmp .no_command
 
