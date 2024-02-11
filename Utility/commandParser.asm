@@ -108,6 +108,11 @@ parse_command:
     cmp rcx, 0
     jne .got_hanoi
 
+    mov rbx, hwName
+    call space_compare
+    cmp rcx, 0
+    jne .got_hw
+
     jmp .done
 
     .got_print:
@@ -130,6 +135,9 @@ parse_command:
         jmp .parse_params
     .got_hanoi:
         mov byte [commandID], PROG_HANOI_ID
+        jmp .parse_params
+    .got_hw:
+        mov byte [commandID], PROG_HW_ID
         jmp .parse_params
     .parse_params:
         xor rdx, rdx
@@ -172,6 +180,7 @@ printlnName db  "PRINTLN", 0x0
 addName     db  "ADD", 0x0
 subName     db  "SUB", 0x0
 hanoiName   db  "HANOI", 0x0
+hwName      db  "HW", 0x0
 CMDDATA:
 commandID   db  0
 commBuffer  times 100 db 0
